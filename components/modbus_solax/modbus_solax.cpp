@@ -17,7 +17,7 @@ void ModbusSolax::setup() {
 
 void ModbusSolax::loop() {
   const uint32_t now = millis();
-  if (now - this->last_modbus_solax_byte_ > 50) {
+  if (now - this->last_modbus_solax_byte_ > 500) {
     this->rx_buffer_.clear();
     this->last_modbus_solax_byte_ = now;
   }
@@ -226,6 +226,8 @@ void ModbusSolax::send(SolaxMessageT *tx_message) {
 
   ESP_LOGVV(TAG, "TX -> %s", format_hex_pretty((const uint8_t *) tx_message, msg_len).c_str());
 
+  // should we discard any input buffer?
+  
   if (this->flow_control_pin_ != nullptr)
     this->flow_control_pin_->digital_write(true);
 
