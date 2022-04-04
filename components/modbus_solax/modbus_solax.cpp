@@ -215,7 +215,7 @@ void ModbusSolax::discover_devices() {
 
 void ModbusSolax::send(SolaxMessageT *tx_message) {
   uint8_t msg_len;
-
+return;
   tx_message->Header[0] = 0xAA;
   tx_message->Header[1] = 0x55;
 
