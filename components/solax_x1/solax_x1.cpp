@@ -72,7 +72,7 @@ void SolaxX1::on_modbus_solax_info(const std::vector<uint8_t> &data) {
 }
 
 void SolaxX1::on_modbus_solax_data(const std::vector<uint8_t> &data) {
-  if (data.size() != 52 || data.size() != 50) {
+  if (! (data.size() == 52 || data.size() == 50)) {
     // Solax X1 mini status report:
     // AA.55.00.0A.01.00.11.82.34.00.1A.00.02.00.00.00.00.00.00.00.00.00.00.09.21.13.87.00.00.FF.FF.
     // 00.00.00.12.00.00.00.15.00.00.00.00.00.00.00.00.00.00.00.00.00.00.00.00.00.00.00.00.00.00.04.D6
