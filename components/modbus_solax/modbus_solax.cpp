@@ -123,10 +123,10 @@ bool ModbusSolax::parse_modbus_solax_byte_(uint8_t byte) {
   for (auto *device : this->devices_) {
     if (device->address_ == address) {
       if (frame[6] == 0x11) {
-        if (frame[7] == 0x83) {
+        if (frame[7] == 0x82) {
           // query live data response
           device->on_modbus_solax_info(data);
-        } else if (frame[7] == 0x82) {
+        } else if (frame[7] == 0x83) {
           // query device info response
           device->on_modbus_solax_data(data);
         } else {
