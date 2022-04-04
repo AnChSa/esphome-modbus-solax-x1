@@ -59,7 +59,9 @@ bool ModbusSolax::parse_modbus_solax_byte_(uint8_t byte) {
 
   // Byte 0: modbus address (match all)
   if (at == 0)
-    return true;
+  {
+    return byte == 0xAA;
+  }
 
   // Byte 1: Function (msb indicates error)
   if (at == 1)
